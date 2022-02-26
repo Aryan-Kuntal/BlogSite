@@ -1,0 +1,22 @@
+{% extends 'news_blog/base.html' %}
+
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10 col-sm-12 text-center">
+            <h1 class="display-1">Read the news while you express yourself</h1>
+
+            <div class="d-flex justify-content-center mt-5">
+                <a href="{% url 'news' %}" class="btn btn-dark mr-4" style="margin:10px">Catch up with the world</a>
+                <a href="{% url 'blog' %}" class="btn btn-dark" style="margin:10px">Go to your blog</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

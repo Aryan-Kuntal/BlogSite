@@ -1,0 +1,22 @@
+{% extends 'news_blog/base.html' %}
+
+{% block title %} Create new post{% endblock %}
+{% block content %}
+<h2 class="mx-auto display-5 my-3">Create Post</h2>
+    <form  class="form-control" method="POST">
+        {% csrf_token %}
+        <div class="form-floating my-3">
+
+            <input type="text" name="title" class="form-control" placeholder="Title">
+            <label class="form-label">Title</label>
+        </div>
+
+        <div class="form-floating my-3">
+
+            <textarea type="text" name="content" placeholder="Write Here" class="form-control" style="height:300px"></textarea>
+            <label class="form-label">Content</label>
+        </div>
+        <button type="submit" class=" form control btn btn-dark">Submit</button>
+
+    </form>
+{% endblock %}

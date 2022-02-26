@@ -1,0 +1,37 @@
+{% extends 'news_blog/base.html' %}
+
+{% block title %} Your Blog{% endblock %}
+{% block content %}
+{% if posts %}
+<h2 class="mx-auto display-4">Your Blog</h2>
+
+<h5><a href="{% url 'create' %}">(Create More)</i></a></h5>
+    {% for post in posts %}
+
+        <div class="card text-white bg-secondary w-50 mt-5">
+            <div class="card-header">
+                <h1><a href="/blog/{{post.id}}" style="color:white">{{ post.title }}</a></h1>
+            </div>
+            <div class="card-body">
+                <h6 class="card-title">
+                Created On: {{ post.date }}
+                </h6>
+                <p class="card-text">
+
+                <form method="POST" class="mt-1" >
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light btn-sm" name="c{{post.id}}" value="remove">
+                        X
+                    </button>
+                </form>
+                </p>
+            </div>
+        </div>
+
+    {% endfor %}
+    {%  else %}
+    <h2 class="mx-auto display-4">No posts to show.</h2>
+    <br>
+    <h4><a href="{% url 'create' %}">Create new Now</a></h4>
+    {% endif %}
+{% endblock %}``

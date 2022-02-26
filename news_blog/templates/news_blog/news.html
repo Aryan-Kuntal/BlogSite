@@ -1,0 +1,65 @@
+{% extends 'news_blog/base.html' %}
+
+{% block title %} Your news{% endblock %}
+{% block content %}
+{% if articles %}
+<h2 class="display-4 mb-4 mt-1">Your News Feed</h2>
+
+<form method="POST" class="form-control" style="width:50%;height:20%" >
+    {% csrf_token %}
+    <h2 class="ms-2 mb-3">Filter</h2>
+    <table class="table table-borderless">
+    <tr>
+        <th><label  class="form-label">Search</label></th>
+        <th><label class="form-label">Sort by</label></th>
+        <th><label class="form-label">Category</label></th>
+    </tr>
+    <tr>
+        <td><input type="text" class="form-control mb-2" name="q" placeholder="Search" ></td>
+        <td>
+            <select class="form-select mb-2" name="sort">
+        <option name="sort" value="everything">Relevence</option>
+        <option name="sort" value="top-headlines">Top Headlines</option>
+            </select>
+        </td>
+        <td>
+            <select class="form-select" name="category">
+                <option name="category" value="all">all</option>
+        {% for c in category %}
+                <option name="category" value={{ c }}>{{ c }}</option>
+        {% endfor %}
+  </select>
+
+        </td>
+    </tr>
+    </table>
+    <button type="submit" class="btn btn-dark ms-2 mb-2">Filter Search</button>
+</form>
+
+<br>
+
+<hr>
+<div class="row">
+{% for article in articles %}
+  <div class="col-lg-5 my-4">
+<div class="card" style="width:400px;height:100x left-margin:20px">
+
+  <a href="{{article.url}}">
+      <img src={{ article.urlToImage }} class="card-img-top" alt="No image to display">
+  </a>
+
+  <div class="card-body">
+    <h5 class="card-title">{{article.title}}</h5>
+    <p class="card-text">{{ article.description }}</p>
+
+  </div>
+</div>
+  </div>
+  <br>
+{% endfor %}
+</div>
+  {% else %}
+  <h2 class="display-4">Problem encountered</h2>
+  {% endif %}
+
+    {% endblock %}

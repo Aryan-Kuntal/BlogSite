@@ -1,0 +1,9 @@
+{% extends 'news_blog/base.html' %}
+
+{% block title %} {{ article.title}} {% endblock %}
+{% block content %}
+
+  <h1 class="mx-auto display-2">{{article.title}}</h1>
+  <hr>
+  <p>{{ article.content }}</p>
+{% endblock %}

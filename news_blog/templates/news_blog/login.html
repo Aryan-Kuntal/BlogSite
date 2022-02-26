@@ -1,0 +1,19 @@
+{% extends 'news_blog/base.html' %}
+
+{% block title %} Login to proceed {% endblock %}
+{% block content %}
+
+<div>
+    <h1 class="display-4 mb-4 mt-1">Login</h1>
+
+    <form method="POST" class="form-control">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <h3><p class="my-2">Forgot Password? <a href="/password_reset/">Click here</a></p></h3>
+    <button class="btn btn-dark mt-3">Login</button>
+    </form>
+
+    <h3><p class="text-center mt-1">Not a member? <a href="{% url 'registration' %}">Register</a> instead.</p></h3>
+</div>
+
+{% endblock %}

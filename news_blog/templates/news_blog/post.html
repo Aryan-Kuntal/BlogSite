@@ -1,0 +1,10 @@
+{% extends 'news_blog/base.html' %}
+
+{% block title %} {{ post.title }}{% endblock %}
+{% block content %}
+  <div class="jumbotron">
+  <h1 class="mx-auto display-2">{{ post.title }}</h1>
+  <hr>
+  <p class="lead">{{ post.content }}</p>
+    </div>
+{% endblock %}

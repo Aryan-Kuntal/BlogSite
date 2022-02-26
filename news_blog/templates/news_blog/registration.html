@@ -1,0 +1,17 @@
+{% extends 'news_blog/base.html' %}
+
+{% block title %} Register yourself {% endblock %}
+{% block content %}
+
+<div>
+    <h1 class="display-4 mb-4 mt-1">Register</h1>
+
+    <form method="POST" class="form-control">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-dark mt-3" type="submit">Register</button>
+    </form>
+    <h3><p class="text-center mt-1">Already have an account? <a href="{% url 'login_request' %}">Login</a> instead.</p></h3>
+</div>
+
+{% endblock %}
