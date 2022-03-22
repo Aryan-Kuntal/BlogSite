@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 import json
+import os
 from .models import Post
 from .forms import PostForm,NewUser
 import requests
@@ -14,7 +15,7 @@ def homepage(request):
 
 @login_required(login_url='/login/')
 def news_page(request,optional=''):
-    API_KEY = "64066e6575424434b3b84c25e67477a0"
+    API_KEY = os.getenv('API_KEY')
     link = f'https://newsapi.org/v2/top-headlines?country=in&apiKey={API_KEY}'
     if request.method == 'POST':
         post = request.POST
